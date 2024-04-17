@@ -16,7 +16,24 @@ class AddTaskScreen extends StatelessWidget {
           isDone: false,
         ),
       );
-      Navigator.of(context).pop();
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Task Added'),
+            content: Text('Your task has been added successfully.'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop(); // Close the dialog and the add task screen
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
     }
   }
 
